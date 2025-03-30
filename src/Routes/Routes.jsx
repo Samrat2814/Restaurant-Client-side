@@ -5,6 +5,7 @@ import Login from "../Pages/LoginPage/Login";
 import SignIn from "../Pages/SignInPage/SignIn";
 import AllFoods from "../Pages/AllFoods/AllFoods";
 import Gallery from "../Pages/Gallery/Gallery";
+import AddFoodForm from "../Pages/AddFoodForm/AddFoodForm";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery/>,
+      },
+      {
+        path: "/addFood",
+        element: <AddFoodForm/>
       },
 
       {
