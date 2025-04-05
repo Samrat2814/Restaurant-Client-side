@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
     loading,
     googleLogin
   };
-  console.log(user)
+  // console.log(user)
 
   // observer
   useEffect(() => {

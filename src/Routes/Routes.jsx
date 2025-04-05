@@ -6,6 +6,8 @@ import SignIn from "../Pages/SignInPage/SignIn";
 import AllFoods from "../Pages/AllFoods/AllFoods";
 import Gallery from "../Pages/Gallery/Gallery";
 import AddFoodForm from "../Pages/AddFoodForm/AddFoodForm";
+import PageDetails from "../Pages/PageDetails/PageDetails";
+import FoodPurchasePage from "../Pages/FoodPurchasePage/FoodPurchasePage";
 
 const router = createBrowserRouter([
   {
@@ -17,16 +19,33 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/foods",
-        element: <AllFoods/>,
+        path: "/all-foods",
+        element: <AllFoods />,
       },
       {
         path: "/gallery",
-        element: <Gallery/>,
+        element: <Gallery />,
       },
       {
         path: "/addFood",
-        element: <AddFoodForm/>
+        element: <AddFoodForm />,
+      },
+      {
+        path: "/page-details/:id",
+        element: <PageDetails />,
+        loader: async ({ params }) => {
+          const response = await fetch(
+            `http://localhost:5000/items/${params.id}`
+          );
+          if (!response.ok) {
+            throw new Response("Food item not found", { status: 404 });
+          }
+          return response.json(); // Parse the response body as JSON
+        },
+      },
+      {
+        path: "food-purchase",
+        element:<FoodPurchasePage/>,
       },
 
       {

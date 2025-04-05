@@ -66,7 +66,7 @@ const Navbar = () => {
           <NavLink to="/" className="text-white text-lg hover:text-blue-300">
             Home
           </NavLink>
-          <NavLink to="/foods" className="text-white text-lg hover:text-blue-300">
+          <NavLink to="/all-foods" className="text-white text-lg hover:text-blue-300">
             All Foods
           </NavLink>
           <NavLink
@@ -112,7 +112,7 @@ const Navbar = () => {
           <NavLink to="/" className="block text-lg hover:text-blue-300">
             Home
           </NavLink>
-          <NavLink to="/foods" className="block text-lg hover:text-blue-300">
+          <NavLink to="/all-foods" className="block text-lg hover:text-blue-300">
             All Foods
           </NavLink>
           <NavLink to="/gallery" className="block text-lg hover:text-blue-300">
@@ -122,7 +122,7 @@ const Navbar = () => {
       )}
 
       {/* Auth Actions */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-4 z-40">
         {user ? (
           <div className="relative">
             {/* Profile Image with enhanced styling */}
