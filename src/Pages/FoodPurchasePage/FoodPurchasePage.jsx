@@ -3,10 +3,13 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const FoodPurchasePage = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     foodName: "",
     price: "",
@@ -27,8 +30,7 @@ const FoodPurchasePage = () => {
     let hours = now.getHours();
     const minutes = String(now.getMinutes()).padStart(2, "0");
     const ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12;
-    hours = hours ? hours : 12; // hour '0' should be '12'
+    hours = hours % 12 || 12;
     const strHours = String(hours).padStart(2, "0");
 
     return `${day}/${month}/${year} ${strHours}:${minutes} ${ampm}`;
@@ -49,9 +51,15 @@ const FoodPurchasePage = () => {
         "http://localhost:5000/purchase-items",
         order
       );
+
       if (response.data.insertedId || response.status === 200) {
         toast.success("Order placed successfully!");
         setFormData({ foodName: "", price: "", quantity: "" });
+
+        // Navigate to /my-orders after short delay
+        setTimeout(() => {
+          navigate("/my-orders");
+        }, 1500);
       } else {
         toast.error("Something went wrong. Please try again.");
       }
@@ -130,6 +138,8 @@ const FoodPurchasePage = () => {
           Purchase
         </motion.button>
       </form>
+
+      {/* Toast notifications */}
       <ToastContainer
         position="top-right"
         autoClose={3000}
