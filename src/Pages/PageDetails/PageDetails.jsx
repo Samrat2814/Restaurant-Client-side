@@ -4,12 +4,6 @@ import { motion } from "framer-motion";
 
 const PageDetails = () => {
   const item = useLoaderData(); // This will load the single food item
-  const navigate = useNavigate();
-
-  // Handling Purchase Button Click
-  const handlePurchase = () => {
-    navigate(`/purchase/${item._id}`); // Redirect to purchase page
-  };
 
   return (
     <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-24">

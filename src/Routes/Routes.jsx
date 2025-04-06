@@ -8,6 +8,8 @@ import Gallery from "../Pages/Gallery/Gallery";
 import AddFoodForm from "../Pages/AddFoodForm/AddFoodForm";
 import PageDetails from "../Pages/PageDetails/PageDetails";
 import FoodPurchasePage from "../Pages/FoodPurchasePage/FoodPurchasePage";
+import MyFoods from "../Pages/MyFoods/MyFoods";
+import MyOrders from "../Pages/MyOrders/MyOrders";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: "food-purchase",
         element:<FoodPurchasePage/>,
+      },
+      {
+        path: "my-foods",
+        element:<MyFoods/>,
+      },
+      {
+        path: "my-orders",
+        element:<MyOrders/>,
       },
 
       {
